@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var xhr = new XMLHttpRequest();
 
 $('#submit').on('click', ()=>{
@@ -8,3 +9,8 @@ $('#submit').on('click', ()=>{
   xhr.getResponseHeader('Content-type', 'application/json');
   xhr.send(jsonData);
 });
+=======
+$('#submit').on('click', ()=>{
+    console.log('submitted');
+});
+>>>>>>> a7b4e0e7828a7e10241b18cbc0da4511bd2f3fe0
