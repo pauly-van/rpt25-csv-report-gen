@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParse = require('body-parser');
 const convert = require('./middleware/conversion');
+const fs = require('fs');
 const app = express();
 const port = 3000;
 
@@ -14,7 +15,14 @@ app.get('/', (req, res)=>{
 
 app.post('/', (req, res)=>{
     res.status(200);
-    convert.conversion(req);
+    fs.writeFile('./client/people.csv', convert.conversion(req), (err)=>{
+      if(err){
+        res.status(500).send('Something Went Wrong');
+      }
+    });
+    res.sendFile(__dirname+'/client/people.csv', (err)=>{
+      if(err) throw Error;
+    })
 });
 
 app.listen(port, ()=>{
