@@ -20,9 +20,6 @@ app.post('/', (req, res)=>{
         res.status(500).send('Something Went Wrong');
       }
     });
-    res.sendFile(__dirname+'/client/people.csv', (err)=>{
-      if(err) throw Error;
-    })
 });
 
 app.listen(port, ()=>{
