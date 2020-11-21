@@ -25,7 +25,7 @@ const conversion = function(req){
     }
   };
 
-  childSearch(JSON.parse(req.body.json));
+  childSearch(JSON.parse(req));
   return csvFormat;
 };
 

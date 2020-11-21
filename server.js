@@ -15,7 +15,9 @@ app.get('/', (req, res)=>{
 
 app.post('/', (req, res)=>{
     res.status(200);
-    fs.writeFile('./client/people.csv', convert.conversion(req), (err)=>{
+    let jsonData = JSON.stringify(req.body.json).replace(/\\n|\\r\\n|\\r|\\/g, '');
+    let jsonParseCut = jsonData.slice(1,jsonData.length-2);
+    fs.writeFile('./client/people.csv', convert.conversion(jsonParseCut), (err)=>{
       if(err){
         res.status(500).send('Something Went Wrong');
       }
